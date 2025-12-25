@@ -2,7 +2,10 @@ services:
   db:
     image: mysql:8.0
     env_file:
-      - ./.env.db
+      - ./.db.env
+    environment:
+      MYSQL_ROOT_PASSWORD: "211846894"
+      MYSQL_DATABASE: ${DB_NAME}
     volumes:
       - mysql_data:/var/lib/mysql
       - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -16,8 +19,9 @@ services:
     ports:
       - "8000:80"
     depends_on:
-      - db
+        - db
     env_file:
-      - ./.env.d
+      - ./.db.env
+
 volumes:
   mysql_data:

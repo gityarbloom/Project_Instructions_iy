@@ -35,7 +35,7 @@ class DataConnector:
             
     def create_contact(self, contact_dict:dict):
         sql = "INSERT INTO contacts (name, email, phone) VALUES (%s, %s, %s)"
-        params = (contact_dict["first_name"], contact_dict["last_name"], contact_dict["phonr_number"])
+        params = (contact_dict["first_name"], contact_dict["last_name"], contact_dict["phone_number"])
         try:
             conn = self.connecting()
             cursor = conn.cursor()
